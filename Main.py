@@ -1,11 +1,5 @@
 from parameter import para
 
-ReactorPower = para.ReatorPower # T
-BoronConcentration = para.BoronConcentration # T
-Burnup = para.Burnup # T
-InoperableRodNumber = para.InoperableRodNumber # T
-InoperableRodName = para.InpoerableRodName # T
-
 def ShutdownMarginCalculation(ReactorPower, Burnup, InoperableRodNumber, InoperableRodName):
     ##################################################
     # BOL일때, 현출력 -> 0% 하기위한 출력 결손량을 계산하자.
@@ -134,12 +128,20 @@ def ShutdownMarginCalculation(ReactorPower, Burnup, InoperableRodNumber, Inopera
 
     #print(para.ShutdownMarginValue)
 
+# 2. 의 코드 제안
     if ShudownMargin >= para.ShutdownMarginValue :
-        A=print('만족')
+#         A=print('만족')
+        return ShudownMargin, print('만족')
     else :
-        A=print('불만족')
+#         A=print('불만족')
+        return ShudownMargin, print('불만족')
+#     return ShudownMargin, A
 
-    return ShudownMargin, A
+# 3. 의 코드 제안, 해당 변수가 사용되고 있지 않음.
+# BoronConcentration = para.BoronConcentration # T
 
 
-ShutdownMarginCalculation(ReactorPower=ReactorPower, Burnup=Burnup, InoperableRodNumber=InoperableRodNumber, InoperableRodName=InoperableRodName)
+ShutdownMarginCalculation(ReactorPower=para.ReatorPower
+                          , Burnup=para.Burnup
+                          , InoperableRodNumber=para.InoperableRodNumber
+                          , InoperableRodName=para.InpoerableRodName)
